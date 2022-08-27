@@ -16,8 +16,8 @@ public class Task_2 {
     double d = 2.786;
     boolean condition = false;
     char c = 569;
-    short sh2 = -159;
-    int sh3 = 27879;
+    short s = -159;
+    int i = 27879;
     byte b = 67;
 }
 

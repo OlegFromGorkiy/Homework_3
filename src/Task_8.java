@@ -98,6 +98,8 @@ public class Task_8 {
     }
 
     private static String getTrueWord(float f) {
+        int a = (int)f%100;
+        if(a>10&&a<20) return "рублей";
         switch ((int) f % 10) {
             case 1:
                 return "рубль";
