@@ -22,6 +22,58 @@ public class Task_8 {
         Например, “Маша теперь получает **** рублей. Годовой доход вырос на **** рублей”.
          */
     private static final float INDEXATION = 0.1f;
+    private static List<Person> persons = new ArrayList<>();
+
+    private static void setList() {
+        persons.add(new Person("Маша", 67_760, false));
+        persons.add(new Person("Денис", 83_690, true));
+        persons.add(new Person("Кристина", 76_230, false));
+    }
+
+    private static String getTrueWord(float f) {
+        int a = (int) f % 100;
+        if (a > 10 && a < 20) return "рублей";
+        switch ((int) f % 10) {
+            case 1:
+                return "рубль";
+            case 2:
+            case 3:
+            case 4:
+                return "рубля";
+            default:
+                return "рублей";
+        }
+    }
+
+    public static void solution() {
+        if (persons.isEmpty()) setList();
+        for (var p : persons) {
+            System.out.print(p.toString());
+            float delta = p.getSalary() * INDEXATION;
+            mathAndPrint(p, delta);
+        }
+    }
+
+    public static void solution(int i) {
+        if (persons.isEmpty()) setList();
+        for (var p : persons) {
+            System.out.print(p.toString());
+            float delta = p.getSalary() * i / 100;
+            mathAndPrint(p, delta);
+        }
+    }
+
+    private static void mathAndPrint(Person p, float delta) {
+        float annualDelta = delta * 12;
+        String annualWord = getTrueWord(annualDelta);
+        p.setSalary((p.getSalary() + delta));
+        String newSalaryWord = getTrueWord(p.getSalary());
+        if (p.isMale) System.out.println(" Мы проиндексировали ему зарплату!");
+        else System.out.println(" Мы проиндексировали ей зарплату!");
+        System.out.printf("Теперь %s получает %.0f %s. %s годовой доход вырос на %.0f %s." + "%n",
+                p.name, p.getSalary(), newSalaryWord, p.isMale ? "Его" : "Её"
+                , annualDelta, annualWord);
+    }
 
     static class Person {
         private String name;
@@ -88,79 +140,6 @@ public class Task_8 {
             return String.format(template, name, salary);
         }
     }
-
-    private static List<Person> persons = new ArrayList<>();
-
-    private static void setList() {
-        persons.add(new Person("Маша", 67_760, false));
-        persons.add(new Person("Денис", 83_690, true));
-        persons.add(new Person("Кристина", 76_230, false));
-    }
-
-    private static String getTrueWord(float f) {
-        int a = (int)f%100;
-        if(a>10&&a<20) return "рублей";
-        switch ((int) f % 10) {
-            case 1:
-                return "рубль";
-            case 2:
-            case 3:
-            case 4:
-                return "рубля";
-            default:
-                return "рублей";
-        }
-    }
-
-    public static void solution() {
-        if (persons.isEmpty()) setList();
-        for (var p : persons) {
-            System.out.print(p.toString());
-            float delta = p.getSalary() * INDEXATION;
-            float annualDelta = delta * 12;
-            String annualWord = getTrueWord(annualDelta);
-            p.setSalary((p.getSalary() + delta));
-            String newSalaryWord = getTrueWord(p.getSalary());
-            if (p.isMale) System.out.println(" Мы проиндексировали ему зарплату!");
-            else System.out.println(" Мы проиндексировали ей зарплату!");
-            System.out.printf("Теперь %s получает %.0f %s. %s годовой доход вырос на %.0f %s." + "%n",
-                    p.name, p.getSalary(), newSalaryWord, p.isMale ? "Его" : "Её"
-                    , annualDelta, annualWord);
-        }
-    }
-
-    public static void solution(int i) {
-        if (persons.isEmpty()) setList();
-        for (var p : persons) {
-            System.out.print(p.toString());
-            float delta = p.getSalary() * i/100;
-            float annualDelta = delta * 12;
-            String annualWord = getTrueWord(annualDelta);
-            p.setSalary((p.getSalary() + delta));
-            String newSalaryWord = getTrueWord(p.getSalary());
-            if (p.isMale) System.out.println(" Мы проиндексировали ему зарплату!");
-            else System.out.println(" Мы проиндексировали ей зарплату!");
-            System.out.printf("Теперь %s получает %.0f %s. %s годовой доход вырос на %.0f %s." + "%n",
-                    p.name, p.getSalary(), newSalaryWord, p.isMale ? "Его" : "Её"
-                    , annualDelta, annualWord);
-        }
-    }
 }
-
-    /*
-    String template = "Теперь %s получает %d рублей. Годовой доход вырос на %d рублей.";
-
-    System.out.println("Task 5\n");
-        for (var p : persons) {
-            //int oldSal = p.salary;
-            int newSal = p.salary + p.salary / 10;
-            int annual = 12 * p.salary / 10;
-            System.out.println(p.toString());
-            System.out.println("Мы проиндексировали зарплату!");
-            System.out.println(String.format(template, p.name, newSal, annual));//почему это хуже чем System.out.printf((template) + "%n", p.name, newSal, annual)?
-            System.out.println("Поздравим " + (p.isMale ? "его!\n" : "её!\n"));
-
-        }
-    */
 
 
