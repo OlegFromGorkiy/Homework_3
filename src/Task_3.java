@@ -6,18 +6,18 @@ public class Task_3 {
     Результат задачи выведите в консоль в формате “На каждого ученика рассчитано … листов бумаги”.
     Для объявления переменных не используйте тип var.
      */
-    private int firstClass = 23;
-    private int secondClass = 27;
-    private int thirdClass = 30;
-    private int paperNumber = 480;
+    private  static int firstClass = 23;
+    private  static int secondClass = 27;
+    private  static int thirdClass = 30;
+    private  static int paperNumber = 480;
 
-    public void play(){
+    public static  void solution(){
         String template = "На каждого ученика рассчитано %.1f листов бумаги";
         float result = paperNumber/(firstClass+secondClass+thirdClass);
         System.out.printf(template+"%n", result);
     }
 
-    public void play( int i){
+    public static void solution( int i){
         String template = "На каждого ученика рассчитано %2$d листов бумаги, %1$d листов останется про запас";
         int forChild = i/(firstClass+secondClass+thirdClass);
         int inReserve = i%(firstClass+secondClass+thirdClass);

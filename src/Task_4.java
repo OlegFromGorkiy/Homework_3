@@ -13,7 +13,7 @@ public class Task_4 {
     private static int bottle = 16;
     private static int minutes = 2;
 
-    public static void play() {
+    public static void solution() {
         int perMinute = bottle / minutes;
         int perDay = 24 * 60 * perMinute;
         System.out.println("За 20 минут машина произвела " + 20 * perMinute + " штук бутылок");
@@ -22,7 +22,7 @@ public class Task_4 {
         System.out.println("За 1 месяц машина произвела " + 30 * perDay + " штук бутылок");
     }
 
-    public static void play( int minutes) {
+    public static void solution( int minutes) {
         float perMinute = (float) bottle/ minutes;
         float perDay = 24 * 60 * perMinute;
         System.out.println("За 20 минут машина произвела " + 20 * perMinute + " штук бутылок");
